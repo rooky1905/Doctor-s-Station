@@ -1,0 +1,82 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+<div class="profile">
+    {% for m in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{m}}
+      </div>
+        {% endfor %}
+        <div class="container">
+            <div class="jumbotron">
+<form method="POST" enctype="multipart/form-data" action='{% url "crtpat" %}'>
+{% csrf_token %}
+
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input class="form-control" type="text"  name='name'>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Email</span>
+            </div>
+            <input class="form-control" type="text" name='email'>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Phone</span>
+            </div>
+            <input class="form-control" type="text" name='phone'>
+        </div>
+        <div class="form-group">
+            <p align="left">Gender</p>
+            <select class="form-control" name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Age</span>
+            </div>
+            <input class="form-control" type="text" name='age'>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Address</span>
+            </div>
+            <input class="form-control" type="text" name='address'>
+        </div>
+        <div class="form-group">
+            <p align="left">Blood Group</p>
+            <select class="form-control" name="bloodgroup">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB-</option>
+                <option value="AB-">AB+</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Case Number</span>
+            </div>
+            <input class="form-control" type="text" name='casepaper'>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+</div>
+</div>
+</div>
+</center>
+{% endblock %}

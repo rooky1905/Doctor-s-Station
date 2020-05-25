@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+    <br>
+<table class="table">
+    <thead class="thead-dark">
+    {% ifequal user.last_name "Patient" %}
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Doctor</th>
+        <th scope="col">Pending</th>
+      </tr>
+  
+    {% endifequal %}
+    {% ifequal user.last_name "Doctor" %}
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Patient</th>
+        <th scope="col">Pending</th>
+      </tr>
+  
+    {% endifequal %}
+</table>
+</center>
+{% endblock %}

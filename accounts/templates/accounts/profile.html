@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+{%block title%}
+<title>Profile</title>
+{%endblock%}
+{% block content %}
+<center>
+
+<div class="profile">
+    <div class="container">
+    
+<table class="table">
+    <thead class="thead-dark">
+<tr><th>Name:</th><th>{{ user.first_name }}</th></tr>
+<tr><th>Email:</th><th>{{ user.email }}</th></tr>
+<tr><th>Phone:</th><th> {{ pro.phone }}</th></tr>
+<tr><th>Gender:</th><th> {{ pro.gender }}</th></tr>
+<tr><th>Age:</th><th> {{ pro.age }}</th></tr>
+{% ifequal pro.user.last_name "Patient" %}
+<tr><th>Address:</th><th>{{pro.address}}</th></tr>
+<tr><th>Blood Group:</th><th> {{pro.bloodgroup}}</th></tr>
+<tr><th>Case Number:</th><th>{{pro.casepaper}}</th></tr>
+</div>
+</div>
+</table>
+<br>
+<a href="{% url 'uprofile' %}"><button type="submit" class="btn btn-success">Update Profile</button></a>
+{%endifequal%}
+{% ifequal pro.user.last_name "Doctor" %}
+<tr><th>Department:</th><th>{{pro.Department}}</th></tr>
+<tr><th>Attendance:</th><th>{{pro.attendance}}</th></tr>
+<tr><th>Salary:</th><th>{{pro.salary}}</th></tr>
+
+</div>
+</table>
+{%endifequal%}
+</div>
+</center>
+
+{% endblock %}

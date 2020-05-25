@@ -1,0 +1,40 @@
+{%extends 'home/base.html'%}
+{%block title%}
+<title>Login</title>
+{%endblock%}
+{%block content%}
+<html>
+    <body>
+        <center>
+        <form method='POST'>
+            <div class="container">
+            {% csrf_token %}
+            <br><br>
+            <h1>SIGN IN</h1>
+            {% for m in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{m}}
+            </div>
+            {% endfor %}
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Email</span>
+                    </div>
+                    <input class="form-control" type="text" name="email" required>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Password</span>
+                    </div>
+                    <input class="form-control" type="password" name="password" required>
+                </div>
+                <a href="{% url 'register' %}">Don't have an account? Register now!</a><br><br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+        </form>
+    </center>
+    </body>
+</html>
+{%endblock%}

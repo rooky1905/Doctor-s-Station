@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+    
+<a href="{% url 'addpres'%}"><button type="submit" class="btn btn-primary">Add New Prescription</button></a>
+
+</center>
+<br>
+<center>
+<div class="container">
+{% for pre in pre %}
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">DATE: {{ pre.date|date:"F d Y" }}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{ pre.patient }}</h5>
+      <p class="card-text"> Disease : {{ pre.disease }}</p>
+      <p class="card-text"> Prescription : {{ pre.prescription }}</p>
+    </div>
+  </div>    
+{% endfor %}
+</div>
+</center>
+{% endblock %}

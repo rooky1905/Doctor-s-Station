@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+<div class="profile">
+<form method="POST">
+{% csrf_token %}
+<div class="container">
+<div class="jumbotron">
+
+    <div class="form-group">
+        <p align="left"><b> Patient</b></p>
+        <select class="form-control" name='pat'>
+            {% for p in p %}
+            <option value="{{p}}">{{p}}</option>
+            {% endfor %}
+        </select>
+<br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Prescription</span>
+            </div>
+            <input class="form-control" type="text" name="pres">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Disease</span>
+            </div>
+            <input class="form-control" type="text" name="dis">
+        </div>
+
+      </div>
+    
+<br>
+<button type="submit" class="btn btn-dark">Update</button>
+</div>
+</div>
+</form>
+    
+</div>
+</center>
+{% endblock %}

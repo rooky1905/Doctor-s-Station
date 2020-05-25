@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+
+        <div class="card col-md-3 text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Total Appointments</div>
+            <div class="card-body">
+            <h5 class="card-title">##</h5>
+            </div>
+        </div> 
+        <div class="card col-md-1">
+        </div>
+        <div class="card col-md-3 text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Appointments Done</div>
+            <div class="card-body">
+            <h5 class="card-title">##</h5>
+            </div>
+        </div>
+        <div class="card col-md-1">
+        </div>
+        <div class="card col-md-3 text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Pending</div>
+            <div class="card-body">
+            <h5 class="card-title">##</h5>
+            </div>
+        </div>
+
+</div>
+</div>
+
+<br>
+    <center>
+    <a href="{% url 'crtpat' %}"><button class="btn btn-success" >Create Patient</button></a>
+</center>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in p %}
+        <tr>
+            <th>{{p.user.first_name}}</th>
+            <th>{{p.phone}}</th>
+            <th>{{p.user.email}}</th>
+            <th>{{p.gender}}</th>
+            <th>{{p.age}}</th>
+            <form method="POST" action="{% url 'updatepat' %}">
+                {%csrf_token%}
+                <input type='hidden' value="{{ p.pid }}" name='pid'>
+            <th><button type='submit' class="btn btn-dark">Update</button></th>
+        </tr>
+            </form>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
